@@ -8,7 +8,7 @@ public class BusRepository {
 
     public void Add(String id, int capacity, double fuelLevel, String fuelType, Driver driver) {
 
-        //DRIVER ID VALIDATION CHECK
+        //BUS ID VALIDATION CHECK
         for (Bus currentBus : buses) {
             if (id.equals(currentBus.getBusId())) {
                 throw new IllegalArgumentException("Bus already exists");
@@ -36,10 +36,10 @@ public class BusRepository {
             }
         }
 
-
-
-
         Bus newBus = new Bus(id, capacity, fuelLevel, fuelType, driver);
+        buses.add(newBus);
+
+
     }
 
     public void Update(String id, int capacity, double fuelLevel, String fuelType, Driver driver) {
@@ -82,6 +82,14 @@ public class BusRepository {
                 throw new IllegalArgumentException("Bus does not exist.");
             }
         }
+    }
+
+    public List<Bus> Retrieve() {
+        return buses;
+    }
+
+    public int Count() {
+        return buses.size();
     }
 
 
