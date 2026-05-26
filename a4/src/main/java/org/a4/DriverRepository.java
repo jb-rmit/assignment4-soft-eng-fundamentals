@@ -7,7 +7,7 @@ public class DriverRepository {
 
     public void Add(String id, String name, int experienceYears, String licenseType, String address, String birthdate) {
 
-        //DRIVER ID VALIDATION CHECK
+        //DRIVER ID VALIDATION CHECK - D1
         for (Driver currentDriver : drivers) {
             if (id.equals(currentDriver.getDriverId())) {
                 throw new IllegalArgumentException("Driver already exists");
@@ -36,6 +36,37 @@ public class DriverRepository {
 
         if (!Character.isUpperCase(id.charAt(8)) || !Character.isUpperCase(id.charAt(9))) {
             throw new IllegalArgumentException("Driver id should end with two capital letters");
+        }
+
+        //D2
+        if (address.split("\\|").length != 5) {
+            throw new IllegalArgumentException("Driver address should contain 5 separate fields");
+        }
+
+        //D3
+        if (!birthdate.matches("^\\d{2}-\\d{2}-\\d{4}$")) {
+            throw new IllegalArgumentException("Driver birthdate should be formatted DD-MM-YYYY");
+        }
+
+        Driver newDriver = new Driver(id, name, experienceYears, licenseType, address, birthdate);
+        drivers.add(newDriver);
+    }
+
+    public void Update(String id, int experienceYears, String licenseType, String address, String birthdate) {
+        for (Driver currentDriver : drivers) {
+            if (id.equals(currentDriver.getDriverId())) {
+
+                //D4 - unupdatable license type if experience greater than 10 years
+                if (currentDriver.getExperienceYears() > 10) {
+                    licenseType = currentDriver.getLicenseType();
+                }
+
+                //TODO: UPDATE CODE
+
+
+            } else {
+                throw new IllegalArgumentException("Driver doesn't exist.");
+            }
         }
     }
 

@@ -12,6 +12,16 @@ public class Driver {
     private String address;
     private String birthdate;
 
+    Driver(String driverId, String name, int experienceYears, String licenseType, String address, String birthdate) {
+        this.driverId = driverId;
+        this.name = name;
+        this.experienceYears = experienceYears;
+        this.licenseType = licenseType;
+        this.address = address;
+        this.birthdate = birthdate;
+
+    }
+
     public double getAge() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         LocalDateTime birthday = LocalDateTime.parse(birthdate, dtf);
