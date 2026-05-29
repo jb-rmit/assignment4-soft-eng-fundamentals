@@ -1,9 +1,10 @@
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DriverRepository {
-    private List<Driver> drivers;
+    private List<Driver> drivers = new ArrayList<>();
 
     public void Add(String id, String name, int experienceYears, String licenseType, String address, String birthdate) {
 
