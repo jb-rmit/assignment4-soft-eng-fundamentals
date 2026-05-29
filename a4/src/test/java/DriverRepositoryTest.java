@@ -21,4 +21,21 @@ public class DriverRepositoryTest {
             });
     }
 
+    @Test
+    void DriverIDLength11Fails(){
+        var dr = new DriverRepository();
+        String id = "33$$11111AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+
+    }
+
 }
