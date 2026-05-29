@@ -176,7 +176,7 @@ public class DriverRepositoryTest {
     }
 
     @Test
-    void DriverIDMorThanTwoSpecialCharactersPass(){
+    void DriverIDMoreThanTwoSpecialCharactersPass(){
         var dr = new DriverRepository();
         String id = "33$#^11%AA";
         String name = "John Doe";
