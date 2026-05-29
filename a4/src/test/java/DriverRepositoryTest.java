@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 public class DriverRepositoryTest {
     
     @Test
-    void driverIDUniqueCheck(){
+    void driverIDNotUniqueFail(){
         var dr = new DriverRepository();
         String id = "33$$1111AA";
         String name = "John Doe";
