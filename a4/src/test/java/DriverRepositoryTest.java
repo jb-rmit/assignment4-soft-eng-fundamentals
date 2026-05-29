@@ -140,5 +140,55 @@ public class DriverRepositoryTest {
 
     }
     
+    @Test
+    void DriverIDOneSpecialCharacterFail(){
+        var dr = new DriverRepository();
+        String id = "33$11111AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+
+    }
+
+    @Test
+    void DriverIDTwoSpecialCharactersPass(){
+        var dr = new DriverRepository();
+        String id = "33$1111%AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertDoesNotThrow(() -> {
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+        });
+
+
+        
+    }
+
+    @Test
+    void DriverIDMorThanTwoSpecialCharactersPass(){
+        var dr = new DriverRepository();
+        String id = "33$#^11%AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertDoesNotThrow(() -> {
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+        });
+
+    }
 
 }
