@@ -23,7 +23,8 @@ public class DriverRepository {
             throw new IllegalArgumentException("Driver id should start with two digits");
         }
 
-        if (id.charAt(0) < 2 || id.charAt(0) > 9 || id.charAt(1) < 2 || id.charAt(1) > 9) {
+        if (Character.getNumericValue(id.charAt(0)) < 2 || Character.getNumericValue(id.charAt(0)) > 9 
+            || Character.getNumericValue(id.charAt(1)) < 2 || Character.getNumericValue(id.charAt(1)) > 9) {
             throw new IllegalArgumentException("Driver id should start with two digits between 2 and 9");
         }
 
