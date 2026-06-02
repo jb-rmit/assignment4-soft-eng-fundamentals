@@ -191,4 +191,52 @@ public class DriverRepositoryTest {
 
     }
 
+    @Test
+    void DriverIDEndsWithTwoDigitsFail() {
+        var dr = new DriverRepository();
+        String id = "33$$111111";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+    }
+
+    @Test
+    void DriverIDEndsWithTwoLowercaseFail() {
+        var dr = new DriverRepository();
+        String id = "33$$1111aa";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+    }
+
+    @Test
+    void DriverIDEndsWithOneUpperOneLowerFail() {
+        var dr = new DriverRepository();
+        String id = "33$$1111Aa";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+    }
+
 }
