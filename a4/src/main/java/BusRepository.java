@@ -1,10 +1,11 @@
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class BusRepository {
-    private List<Bus> buses;
+    private List<Bus> buses = new ArrayList<>();
 
     public void Add(String id, int capacity, double fuelLevel, String fuelType, Driver driver) {
 
