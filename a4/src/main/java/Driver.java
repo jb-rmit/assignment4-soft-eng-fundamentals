@@ -1,8 +1,8 @@
 
 
-import java.time.Duration;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 
 public class Driver {
     private String driverId;
@@ -24,10 +24,10 @@ public class Driver {
 
     public double getAge() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDateTime birthday = LocalDateTime.parse(birthdate, dtf);
+        LocalDate birthday = LocalDate.parse(birthdate, dtf);
 
-        Duration duration = Duration.between(birthday, LocalDateTime.now());
-        double age = duration.toHours() / 8760.0; //8760 hours in a year
+        long duration = ChronoUnit.DAYS.between(birthday, LocalDate.now());
+        double age = duration/ 365.2425; //365 days in a year (accounting for Leap years)
         return age;
     }
 
