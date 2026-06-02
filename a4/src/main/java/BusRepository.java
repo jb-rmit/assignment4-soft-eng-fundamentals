@@ -16,7 +16,7 @@ public class BusRepository {
             }
         }
         //B1 - Max length: 8, numbers only digits
-        if (id.length() != 8 || id.matches("[0-9]+")) {
+        if (id.length() != 8 || !id.matches("[0-9]+")) {
             throw new IllegalArgumentException("Bus ID is invalid");
         }
 
