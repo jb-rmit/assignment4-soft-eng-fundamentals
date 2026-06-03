@@ -36,8 +36,23 @@ public class DriverRepositoryIntegrationTest {
         DriverRepository driverRepository = new DriverRepository();
 
         //Add driver database, 2 valid drivers.
-        driverRepository.readDatabaseTextFile("src/test/testfiles/driver_database_update.txt");
+        driverRepository.readDatabaseTextFile("src/test/testfiles/driver_database_toUpdate.txt");
 
+        //Change Jane's licenseType from "Light" to "Heavy"
+        driverRepository.Update("7511!*11DE", "Jane Doe", "Heavy", "11|Queen St|Melbourne|Victoria|Australia", "23-10-1965");
+
+        //Save changes to file
+        driverRepository.saveToFile("src/test/testfiles/driver_database_updated.txt");
+
+        //
+        DriverRepository driverRepositoryUpdated = new DriverRepository();
+
+        driverRepositoryUpdated.readDatabaseTextFile("src/test/testfiles/driver_database_updated.txt");
+
+        assertEquals("Heavy", driverRepositoryUpdated.getDriverById("7511!*11DE").getLicenseType());
+    }
+
+    public void DriverRecordCountIsUpdated() {
 
     }
 }

@@ -34,7 +34,12 @@ public class DriverRepository {
                 }
 
                 //all is well, so run validation checks in Add method.
-                this.Add(driverFields[0], driverFields[1], Integer.parseInt(driverFields[2]), driverFields[3], driverFields[4], driverFields[5]);
+                try {
+                    this.Add(driverFields[0], driverFields[1], Integer.parseInt(driverFields[2]), driverFields[3], driverFields[4], driverFields[5]);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid Driver skipped.");
+                }
+
             }
         } catch (FileNotFoundException e) {
             System.out.println("File driver_database.txt not found.");
@@ -94,8 +99,13 @@ public class DriverRepository {
     }
 
     public void Update(String id, String name, String licenseType, String address, String birthdate) {
+
+        boolean found = false;
+
         for (Driver currentDriver : drivers) {
             if (id.equals(currentDriver.getDriverId())) {
+
+                found = true;
 
                 //D4 - not updatable license type if experience greater than 10 years
                 if (currentDriver.getExperienceYears() > 10) {
@@ -121,9 +131,11 @@ public class DriverRepository {
                 }
                 currentDriver.setBirthdate(birthdate);
 
-            } else {
-                throw new IllegalArgumentException("Driver doesn't exist.");
             }
+        }
+
+        if (!found) {
+            throw new IllegalArgumentException("Driver doesn't exist.");
         }
     }
 
