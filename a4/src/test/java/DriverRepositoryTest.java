@@ -23,6 +23,23 @@ public class DriverRepositoryTest {
     }
 
     @Test
+    void driverIDUniquePass(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+
+        String new_id = "23$$1111AA";
+
+        assertDoesNotThrow(() -> {dr.Add(new_id, name, experienceYears, licenseType, address, birthdate);});
+    }
+
+    @Test
     void DriverIDLength11Fails(){
         var dr = new DriverRepository();
         String id = "33$$11111AA";
