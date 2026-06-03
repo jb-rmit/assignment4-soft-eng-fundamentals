@@ -92,10 +92,12 @@ public class BusRepository {
 
     public void Update(String id, int capacity, double fuelLevel, String fuelType, Driver driver) {
 
-
+        boolean found = false;
 
         for (Bus currentBus : buses) {
             if (id.equals(currentBus.getBusId())) {
+
+                found = true;
 
                 //B3 - Driver age check
                 if (driver.getAge() > 50 && capacity > 50) {
@@ -126,10 +128,11 @@ public class BusRepository {
                 } else {
                     throw new IllegalArgumentException("Capacity cannot increase on update.");
                 }
-            } else {
-                throw new IllegalArgumentException("Bus does not exist.");
+
             }
         }
+
+        if (!found) { throw new IllegalArgumentException("Bus does not exist."); }
     }
 
     public List<Bus> Retrieve() {
