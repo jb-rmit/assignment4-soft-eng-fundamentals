@@ -66,13 +66,24 @@ public class DriverRepository {
                 if (currentDriver.getExperienceYears() > 10) {
                     licenseType = currentDriver.getLicenseType();
                 }
+                currentDriver.setLicenseType(licenseType);
 
-                //D5
+                //D5 - name cannot be changed
                 currentDriver.setName(currentDriver.getName());
 
-                //TODO: UPDATE CODE
-                currentDriver.setLicenseType(licenseType);
+
+
+                //D2 - 5 address format
+                if (address.split("\\|").length != 5) {
+                    throw new IllegalArgumentException("Driver address should contain 5 separate fields");
+                }
                 currentDriver.setAddress(address);
+
+
+                //D3 - birthdate format checking
+                if (!birthdate.matches("^\\d{2}-\\d{2}-\\d{4}$")) {
+                    throw new IllegalArgumentException("Driver birthdate should be formatted DD-MM-YYYY");
+                }
                 currentDriver.setBirthdate(birthdate);
 
             } else {
