@@ -35,6 +35,10 @@ public class Driver {
         return driverId;
     }
 
+    public void setDriverId(String driverId) {
+        this.driverId = driverId;
+    }
+
     public int getExperienceYears() {
         return experienceYears;
     }
@@ -42,5 +46,27 @@ public class Driver {
     public String getLicenseType() {
         return licenseType;
     }
+
+    public void setLicenseType(String licenseType) {
+        this.licenseType = licenseType;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(String birthdate) {
+        this.birthdate = birthdate;
+    }
+
+
 
 }

@@ -52,17 +52,19 @@ public class DriverRepository {
         drivers.add(newDriver);
     }
 
-    public void Update(String id, int experienceYears, String licenseType, String address, String birthdate) {
+    public void Update(String id, String licenseType, String address, String birthdate) {
         for (Driver currentDriver : drivers) {
             if (id.equals(currentDriver.getDriverId())) {
 
-                //D4 - unupdatable license type if experience greater than 10 years
+                //D4 - not updatable license type if experience greater than 10 years
                 if (currentDriver.getExperienceYears() > 10) {
                     licenseType = currentDriver.getLicenseType();
                 }
 
                 //TODO: UPDATE CODE
-
+                currentDriver.setLicenseType(licenseType);
+                currentDriver.setAddress(address);
+                currentDriver.setBirthdate(birthdate);
 
             } else {
                 throw new IllegalArgumentException("Driver doesn't exist.");
