@@ -92,4 +92,8 @@ public class DriverRepository {
         }
     }
 
+    public int getDriverCount() {
+        return drivers.size();
+    }
+
 }

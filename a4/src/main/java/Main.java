@@ -6,19 +6,36 @@ import java.util.Scanner;             // Import the Scanner class to read text f
 public class Main {
     static void main() {
 
-            File database = new File("bus_database.txt");
+            //Find database .txt files
+            File driverDatabase = new File("database_files/driver_database.txt");
+
+            //Setup repositories
+            DriverRepository driverRepository = new DriverRepository();
 
 
+            //Add driver database
             //code adapted from w3schools: https://www.w3schools.com/java/java_files_read.asp
             // try-with-resources: Scanner will be closed automatically
-            try (Scanner myReader = new Scanner(database)) {
+            try (Scanner myReader = new Scanner(driverDatabase)) {
+
+                int lineNumber = 0;
+
                 while (myReader.hasNextLine()) {
                     String data = myReader.nextLine();
-                    System.out.println(data);
+                    String[] driverFields = data.split(",");
+
+                    if (driverFields.length != 6) {
+                        System.out.println("Invalid data format at line " + lineNumber + ". Skipping.");
+                        continue;
+                    }
+
+                    driverRepository.Add(driverFields[0], driverFields[1], Integer.parseInt(driverFields[2]), driverFields[3], driverFields[4], driverFields[5]);
                 }
             } catch (FileNotFoundException e) {
-                System.out.println("File bus_database.txt not found.");
+                System.out.println("File driver_database.txt not found.");
             }
+
+            System.out.println("Driver Count: " + driverRepository.getDriverCount());
 
         }
     }
