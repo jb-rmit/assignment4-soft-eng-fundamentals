@@ -58,7 +58,7 @@ public class DriverRepository {
         drivers.add(newDriver);
     }
 
-    public void Update(String id, String licenseType, String address, String birthdate) {
+    public void Update(String id, String name, String licenseType, String address, String birthdate) {
         for (Driver currentDriver : drivers) {
             if (id.equals(currentDriver.getDriverId())) {
 
@@ -66,6 +66,9 @@ public class DriverRepository {
                 if (currentDriver.getExperienceYears() > 10) {
                     licenseType = currentDriver.getLicenseType();
                 }
+
+                //D5
+                currentDriver.setName(currentDriver.getName());
 
                 //TODO: UPDATE CODE
                 currentDriver.setLicenseType(licenseType);
