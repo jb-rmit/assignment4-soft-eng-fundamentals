@@ -1,9 +1,10 @@
-package org.a4;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class DriverRepository {
-    private List<Driver> drivers;
+    private List<Driver> drivers = new ArrayList<>();
 
     public void Add(String id, String name, int experienceYears, String licenseType, String address, String birthdate) {
 
@@ -20,6 +21,11 @@ public class DriverRepository {
 
         if (!Character.isDigit(id.charAt(0)) || !Character.isDigit(id.charAt(1))) {
             throw new IllegalArgumentException("Driver id should start with two digits");
+        }
+
+        if (Character.getNumericValue(id.charAt(0)) < 2 || Character.getNumericValue(id.charAt(0)) > 9 
+            || Character.getNumericValue(id.charAt(1)) < 2 || Character.getNumericValue(id.charAt(1)) > 9) {
+            throw new IllegalArgumentException("Driver id should start with two digits between 2 and 9");
         }
 
         int specialCharacterCount = 0;

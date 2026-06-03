@@ -1,10 +1,11 @@
-package org.a4;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class BusRepository {
-    private List<Bus> buses;
+    private List<Bus> buses = new ArrayList<>();
 
     public void Add(String id, int capacity, double fuelLevel, String fuelType, Driver driver) {
 
@@ -15,7 +16,7 @@ public class BusRepository {
             }
         }
         //B1 - Max length: 8, numbers only digits
-        if (id.length() != 8 || id.matches("[0-9]+")) {
+        if (id.length() != 8 || !id.matches("[0-9]+")) {
             throw new IllegalArgumentException("Bus ID is invalid");
         }
 
