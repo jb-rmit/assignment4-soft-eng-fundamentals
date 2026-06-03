@@ -1,3 +1,6 @@
+name: Bus & Driver Unit Tests
+  
+
 on:
   push:
     branches: [ "main" ]
@@ -11,7 +14,8 @@ jobs:
     - uses: actions/checkout@v4
     - uses: actions/setup-java@v4
       with:
-        java-version: '17'
+        java-version: '21'
         distribution: 'temurin'
         cache: 'maven'
-    - run: mvn clean test
+    - run: mvn test
+      working-directory: ./assignment4-soft-eng-fundamentals/a4
