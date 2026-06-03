@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 
 public class BusRepository {
-    private List<Bus> buses = new ArrayList<>();
+    private final List<Bus> buses = new ArrayList<>();
     private DriverRepository driverRepository = new DriverRepository();
 
     public void setDriverRepository(DriverRepository driverRepository) {
@@ -47,8 +47,14 @@ public class BusRepository {
                 }
 
                 //all is well, so run validation checks in Add method.
-                this.Add(busFields[0], Integer.parseInt(busFields[1]), Double.parseDouble(busFields[2]), busFields[3], driver);
-            }
+                try {
+                    this.Add(busFields[0], Integer.parseInt(busFields[1]), Double.parseDouble(busFields[2]), busFields[3], driver);
+                } catch (IllegalArgumentException e) {
+                    System.out.println("Invalid Driver skipped.");
+                    e.printStackTrace();
+                }
+
+                }
         } catch (FileNotFoundException e) {
             System.out.println("File " + busDatabaseFilePath + " not found.");
         }
@@ -141,6 +147,16 @@ public class BusRepository {
 
     public int Count() {
         return buses.size();
+    }
+
+    public Bus getBusById(String id) {
+        for (Bus currentBus : buses) {
+            if (id.equals(currentBus.getBusId())) {
+                return currentBus;
+            }
+        }
+
+        return null;
     }
 
     public void saveToFile(String fileName) {
