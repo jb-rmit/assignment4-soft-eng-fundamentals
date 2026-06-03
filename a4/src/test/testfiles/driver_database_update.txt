@@ -1,0 +1,2 @@
+3411**11AA,John Doe,8,Heavy,10|Downing St|Melbourne|Victoria|Australia,03-07-1990
+7511!*11DE,Jane Doe,3,Light,11|Queen St|Melbourne|Victoria|Australia,23-10-1965

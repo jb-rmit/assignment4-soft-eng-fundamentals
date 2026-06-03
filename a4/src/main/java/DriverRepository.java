@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.IOException;  // Import the IOException class
+
 
 public class DriverRepository {
     private List<Driver> drivers = new ArrayList<>();
@@ -136,6 +139,20 @@ public class DriverRepository {
         }
 
         return null;
+    }
+
+    public void saveToFile(String fileName) {
+
+        try (FileWriter writer = new FileWriter(fileName)) {
+
+            for (Driver currentDriver : drivers) {
+                writer.write(currentDriver.getDriverId() + "," + currentDriver.getName() + "," + currentDriver.getExperienceYears() + "," + currentDriver.getLicenseType() +  "," + currentDriver.getAddress() + "," + currentDriver.getBirthdate() + "\n");
+            }
+            System.out.println("Successfully wrote to " + fileName + ".");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
     }
 
 }

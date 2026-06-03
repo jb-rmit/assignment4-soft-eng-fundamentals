@@ -2,6 +2,8 @@
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -138,6 +140,18 @@ public class BusRepository {
         return buses.size();
     }
 
+    public void saveToFile(String fileName) {
 
+        try (FileWriter writer = new FileWriter(fileName)) {
+
+            for (Bus currentBus : buses) {
+                writer.write(currentBus.getBusId() + "," + currentBus.getCapacity() + "," + currentBus.getFuelLevel() + "," + currentBus.getFuelType() + "," + currentBus.getDriver().getDriverId() + "\n");
+            }
+            System.out.println("Successfully wrote to " + fileName + ".");
+
+        } catch (IOException e) {
+            System.out.println("An error occurred.");
+        }
+    }
 
 }

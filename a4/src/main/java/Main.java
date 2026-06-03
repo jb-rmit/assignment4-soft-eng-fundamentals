@@ -22,5 +22,8 @@ public class Main {
             System.out.println("Driver Count: " + driverRepository.getDriverCount());
             System.out.println("Bus Count: " + busRepository.Count());
 
+            driverRepository.saveToFile("database_files/driver_database_copy.txt");
+            busRepository.saveToFile("database_files/bus_database_copy.txt");
+
         }
     }
