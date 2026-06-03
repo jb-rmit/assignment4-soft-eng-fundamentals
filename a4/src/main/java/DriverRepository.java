@@ -128,4 +128,14 @@ public class DriverRepository {
         return drivers.size();
     }
 
+    public Driver getDriverById(String driverId) {
+        for (Driver currentDriver : drivers) {
+            if (driverId.equals(currentDriver.getDriverId())) {
+                return currentDriver;
+            }
+        }
+
+        return null;
+    }
+
 }
