@@ -1,4 +1,5 @@
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.Test;
 
@@ -305,6 +306,85 @@ public class DriverRepositoryTest {
             });
     }
 
+    @Test
+    void DriverUpdateCannotChangeName(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
 
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+
+        String new_name = "Jane Doe";
+
+        dr.Update(id, new_name, licenseType, address, birthdate);
+
+        String driverName = dr.getDriverById(id).getName();
+        assertEquals(name, driverName);
+    }
+
+
+    @Test
+    void DriverUpdateCannotChangeLicenceIfExperienceMoreThanTen(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 20;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+
+        String new_license = "Medium";
+
+        dr.Update(id, name, new_license, address, birthdate);
+
+        String driverLicense = dr.getDriverById(id).getLicenseType();
+        assertEquals(licenseType, driverLicense);
+    }
+
+    @Test
+    void DriverUpdateCanChangeLicenceIfExperienceTen(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 10;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+
+        String new_license = "Medium";
+
+        dr.Update(id, name, new_license, address, birthdate);
+
+        String driverLicense = dr.getDriverById(id).getLicenseType();
+        assertEquals(new_license, driverLicense);
+    }
+
+    @Test
+    void DriverUpdateCanChangeLicenceIfExperienceLessThanTen(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 9;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "01-01-2000";
+
+        dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+
+        String new_license = "Medium";
+
+        dr.Update(id, name, new_license, address, birthdate);
+
+        String driverLicense = dr.getDriverById(id).getLicenseType();
+        assertEquals(new_license, driverLicense);
+    }
    
 }
