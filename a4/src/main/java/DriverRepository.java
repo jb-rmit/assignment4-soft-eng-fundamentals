@@ -1,10 +1,42 @@
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class DriverRepository {
     private List<Driver> drivers = new ArrayList<>();
+
+    public void readDatabaseTextFile(String driverDatabaseFilePath) {
+
+        File driverDatabaseFile = new File(driverDatabaseFilePath);
+        //code adapted from w3schools: https://www.w3schools.com/java/java_files_read.asp
+        // try-with-resources: Scanner will be closed automatically
+        try (Scanner myReader = new Scanner(driverDatabaseFile)) {
+
+            //count line for logging
+            int lineNumber = 0;
+
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                //split line on comma, used for separating fields
+                String[] driverFields = data.split(",");
+
+                //if there are not exactly 6 fields, the line is malformed. Skip.
+                if (driverFields.length != 6) {
+                    System.out.println("Invalid data format at line " + lineNumber + ". Skipping.");
+                    continue;
+                }
+
+                //all is well, so run validation checks in Add method.
+                this.Add(driverFields[0], driverFields[1], Integer.parseInt(driverFields[2]), driverFields[3], driverFields[4], driverFields[5]);
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File driver_database.txt not found.");
+        }
+    }
 
     public void Add(String id, String name, int experienceYears, String licenseType, String address, String birthdate) {
 
