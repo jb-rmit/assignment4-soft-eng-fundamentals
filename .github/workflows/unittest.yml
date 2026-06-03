@@ -18,4 +18,4 @@ jobs:
         distribution: 'temurin'
         cache: 'maven'
     - run: mvn test
-      working-directory: ./assignment4-soft-eng-fundamentals/a4
+      working-directory: a4
