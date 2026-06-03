@@ -19,7 +19,7 @@ public class Bus {
         return busId;
     }
 
-    // public void setBusId(String busId) { this.busId = busId; }
+    public void setBusId(String busId) { this.busId = busId; }
 
     public int getCapacity() {
         return capacity;
