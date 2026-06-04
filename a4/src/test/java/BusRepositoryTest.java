@@ -17,10 +17,12 @@ public class BusRepositoryTest {
 
         br.Add(id, capacity, fuelLevel, fuelType, driver);
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -50,10 +52,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 1, "Light", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+        
+        System.out.println(exception);
     }
 
     @Test
@@ -66,10 +70,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 1, "Light", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -82,10 +88,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 1, "Light", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -102,10 +110,12 @@ public class BusRepositoryTest {
 
         int new_capacity = 70;
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Update(id, new_capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -154,10 +164,12 @@ public class BusRepositoryTest {
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-1976");
 
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -198,10 +210,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 5, "Light", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -214,10 +228,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 5, "Light", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     
@@ -231,10 +247,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 5, "Medium", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -247,10 +265,12 @@ public class BusRepositoryTest {
         Driver driver = new Driver("33$$1111AA", "John Doe", 5, "Medium", 
                             "1|Sesame St.|Melbourne|Victoria|Australia", "01-01-2000");
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 br.Add(id, capacity, fuelLevel, fuelType, driver);
             });
+
+        System.out.println(exception);
     }
 
 
