@@ -17,10 +17,12 @@ public class DriverRepositoryTest {
 
         dr.Add(id, name, experienceYears, licenseType, address, birthdate);
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -50,11 +52,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
-
+        
+        System.out.println(exception);
     }
 
     @Test
@@ -67,11 +70,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
-
+        
+        System.out.println(exception);
     }
 
     @Test
@@ -84,10 +88,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+        
+        System.out.println(exception);
 
     }
 
@@ -101,18 +107,19 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
-
+        
+        System.out.println(exception);
     }
     
 
     @Test
     void DriverIDFirstTwoCharactersEqualTwoPass(){
         var dr = new DriverRepository();
-        String id = "33$$1111AA";
+        String id = "22$$1111AA";
         String name = "John Doe";
         int experienceYears = 1;
         String licenseType = "Light";
@@ -151,11 +158,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
 
+        System.out.println(exception);
     }
     
     @Test
@@ -168,11 +176,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
 
+        System.out.println(exception);
     }
 
     @Test
@@ -188,8 +197,6 @@ public class DriverRepositoryTest {
         assertDoesNotThrow(() -> {
         dr.Add(id, name, experienceYears, licenseType, address, birthdate);
         });
-
-
         
     }
 
@@ -219,10 +226,13 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+       IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
+
     }
 
     @Test
@@ -235,10 +245,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -251,10 +263,13 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
+
     }
 
 
@@ -268,10 +283,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|3000|Victoria|Australia";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -284,10 +301,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria";
         String birthdate = "01-01-2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
     }
 
     @Test
@@ -300,10 +319,12 @@ public class DriverRepositoryTest {
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01/01/2000";
 
-        assertThrows(IllegalArgumentException.class, 
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
                 dr.Add(id, name, experienceYears, licenseType, address, birthdate);
             });
+
+        System.out.println(exception);
     }
 
     @Test
