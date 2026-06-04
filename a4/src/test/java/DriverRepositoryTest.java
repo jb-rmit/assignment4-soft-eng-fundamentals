@@ -310,7 +310,7 @@ public class DriverRepositoryTest {
     }
 
     @Test
-    void DriverBirthdayWrongFormatFail(){
+    void DriverBirthdayWithBackslashFail(){
         var dr = new DriverRepository();
         String id = "33$$1111AA";
         String name = "John Doe";
@@ -318,6 +318,24 @@ public class DriverRepositoryTest {
         String licenseType = "Light";
         String address = "1|Sesame St.|Melbourne|Victoria|Australia";
         String birthdate = "01/01/2000";
+
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
+            () -> {
+                dr.Add(id, name, experienceYears, licenseType, address, birthdate);
+            });
+
+        System.out.println(exception);
+    }
+
+    @Test
+    void DriverBirthdayWithYearFirstFail(){
+        var dr = new DriverRepository();
+        String id = "33$$1111AA";
+        String name = "John Doe";
+        int experienceYears = 1;
+        String licenseType = "Light";
+        String address = "1|Sesame St.|Melbourne|Victoria|Australia";
+        String birthdate = "2000-01-01";
 
         IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, 
             () -> {
